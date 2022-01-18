@@ -1,7 +1,33 @@
+/*--------TAGS--------*/
+body{
+    background-color: beige !important;
+}
+
+h1{
+    font-family: 'Luxurious Roman', cursive;
+}
+
+/*--------CLASSES--------*/
+/*Roll custom die button*/
 .rollcustom{
     visibility: hidden;
 }
 
+/*Div classes*/
+.title{
+    border: 3px solid black;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    width: 25%;
+}
+
+.dicebuttons, .resultbox, .resetbutton{
+    margin: 10px 10px 20px 10px;
+}
+
+
+/*--------IDs--------*/
 #ndice{
     visibility: hidden;
     width: 60px;

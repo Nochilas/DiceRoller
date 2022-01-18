@@ -11,10 +11,11 @@ $(".custom").click(function(){
 
     $(".rollcustom").click(function(){
         var customsides = document.querySelector("#ndice").value;
-        console.log(customsides);
         var num = Math.floor(Math.random() * customsides + 1);
         $("#result").attr("value", num);
     });
+
+    document.querySelector("#ndice").value = 0;
 });
 
 //Function to reset all dice rolls
