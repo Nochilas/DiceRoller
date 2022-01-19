@@ -7,6 +7,10 @@ h1{
     font-family: 'Luxurious Roman', cursive;
 }
 
+p{
+    font-family: 'Luxurious Roman', cursive;
+}
+
 /*--------CLASSES--------*/
 /*Roll custom die button*/
 .rollcustom{
@@ -16,18 +20,22 @@ h1{
 /*Div classes*/
 .title{
     border: 3px solid black;
-    margin: auto;
+    margin: 25px auto;
     padding: 10px;
     text-align: center;
     width: 25%;
 }
 
-.dicebuttons, .resultbox, .resetbutton{
+.dicebuttons, .resultbox, .resetbutton, .dicequantity{
     margin: 10px 10px 20px 10px;
 }
 
 
 /*--------IDs--------*/
+#dquantity{
+    width: 60px;
+}
+
 #ndice{
     visibility: hidden;
     width: 60px;

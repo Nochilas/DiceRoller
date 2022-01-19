@@ -21,7 +21,12 @@
 
     <div class="title">
         <h1>Dice roller</h1>
-    </div>  
+    </div>
+    
+    <div class="dicequantity">
+        <p>N. dice to roll:</p>
+        <input id="dquantity" name="dquantity" class="d_quantity" type="number" value=1 min=1 step=1>
+    </div>
     
     <div class="dicebuttons">
         <button class="btn-dark dice" id="4">d4</button>
@@ -32,10 +37,10 @@
         <button class="btn-dark dice" id="12">d12</button>
         <button class="btn-dark dice" id="20">d20</button>
         <button class="btn-dark custom">Custom</button>
-        <input id="ndice" name="n_dice" type="number" min=0 step=1>
+        <input id="ndice" name="n_dice" type="number" value=1 min=1 step=1>
         <button class="btn-dark rollcustom">Roll custom dice</button>
     </div>
-    
+
     <div class="resultbox">
         <input id="result" type="number" value=0 min=0 max=0 readonly>
     </div>
