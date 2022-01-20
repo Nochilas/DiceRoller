@@ -44,7 +44,7 @@ $(".reset").click(function(){
     $("#ndice").css("visibility", "hidden");
     $(".rollcustom").css("visibility", "hidden");
     $("#result").attr("value", 0);
-    $(".d_quantity").val(1); //TO DO: fix this 'cause it doesn't work
+    $(".d_quantity").val(1);
     document.querySelector("#ndice").value = 1;
 });
 
