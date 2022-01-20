@@ -2,6 +2,7 @@
 $(".custom").click(function(){
     $("#ndice").css("visibility", "visible");
     $(".rollcustom").css("visibility", "visible");
+});
 
 //Roll standard die
 $(".dice").click(function(e){
@@ -12,8 +13,11 @@ $(".dice").click(function(e){
     //Call the function that generates a random number
     //Repeat n times where n = dice to roll
     for(i = 0; i < diceToRoll; i++)
-        result += RandomNum(e);
-     
+    {
+        var n = RandomNum(e);
+        result += n;
+    }
+
     $("#result").attr("value", result);
 });
 
@@ -50,7 +54,6 @@ function RandomNum(e){
     var sides = e.target.id;
     
     //Generate random number between 1 and n. sides
-    var num = Math.floor(Math.random() * sides + 1);
-    return num;
-    }
-}); //???
+    var n = Math.floor(Math.random() * sides + 1);
+    return n;
+}
