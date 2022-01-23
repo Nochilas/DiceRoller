@@ -13,11 +13,8 @@ $(".dice").click(function(e){
     //Call the function that generates a random number
     //Repeat n times where n = dice to roll
     for(i = 0; i < diceToRoll; i++)
-    {
-        var n = RandomNum(e);
-        result += n;
-    }
-
+        result += RandomNum(e);
+    
     $("#result").attr("value", result);
 });
 
