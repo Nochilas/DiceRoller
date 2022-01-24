@@ -1,3 +1,5 @@
+//let rollSequence = [];
+
 //Make custom options visible
 $(".custom").click(function(){
     $("#ndice").css("visibility", "visible");
@@ -8,6 +10,8 @@ $(".custom").click(function(){
 $(".dice").click(function(e){
     //Get how many dice to roll
     var diceToRoll = document.querySelector("#dquantity").value;
+    var diceType = e.target.id;
+
     var result = 0;
     var record = "";
 
@@ -26,14 +30,16 @@ $(".dice").click(function(e){
             record += `${n} + `;
     }
 
-    document.getElementById("record").value = record;
+    document.getElementById("record").value = `roll ${diceToRoll}d${diceType}: ${record}`;
+    //rollSequence.push(record);
 });
 
 //Roll custom die (TO DO: improve this function)
-$(".rollcustom").click(function(){
+$(".rollcustom").click(function(e){
     //Get how many dice to roll
     var diceToRoll = document.querySelector("#dquantity").value;
     var result = 0;
+    var record = "";
 
     //Generate random number between 1 and n. sides of custom die
     //Repeat n times where n = dice to roll
@@ -42,9 +48,16 @@ $(".rollcustom").click(function(){
         var customsides = document.querySelector("#ndice").value;
         var num = Math.floor(Math.random() * customsides + 1);
         result += num;
+
+        if(diceToRoll == 1)
+            record = `${num}`;
+        else if(i === diceToRoll - 1)
+            record += `${num} = ${result}`;
+        else
+            record += `${num} + `;
     }
 
-    document.getElementById("record").value = result;
+    document.getElementById("record").value = `roll ${diceToRoll} custom dice: ${record}`;
 });
 
 //Reset all dice rolls and results
