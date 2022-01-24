@@ -26,11 +26,10 @@ $(".dice").click(function(e){
             record += `${n} + `;
     }
 
-    $("#result").attr("value", result);
-    $("#record").attr("value", record);
+    document.getElementById("record").value = record;
 });
 
-//Roll custom die
+//Roll custom die (TO DO: improve this function)
 $(".rollcustom").click(function(){
     //Get how many dice to roll
     var diceToRoll = document.querySelector("#dquantity").value;
@@ -45,7 +44,7 @@ $(".rollcustom").click(function(){
         result += num;
     }
 
-    $("#result").attr("value", result);
+    document.getElementById("record").value = result;
 });
 
 //Reset all dice rolls and results
@@ -55,7 +54,7 @@ $(".reset").click(function(){
     $("#result").attr("value", 0);
     $(".d_quantity").val(1);
     document.querySelector("#ndice").value = 1;
-    $("#record").attr("value", "");
+    document.getElementById("record").value = "";
 });
 
 ////////////////////////////////////
