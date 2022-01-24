@@ -9,13 +9,25 @@ $(".dice").click(function(e){
     //Get how many dice to roll
     var diceToRoll = document.querySelector("#dquantity").value;
     var result = 0;
+    var record = "";
 
     //Call the function that generates a random number
     //Repeat n times where n = dice to roll
     for(i = 0; i < diceToRoll; i++)
-        result += RandomNum(e);
-    
+    {
+        var n = RandomNum(e);
+        result += n;
+        
+        if(diceToRoll == 1)
+            record = `${n}`;
+        else if(i === diceToRoll - 1)
+            record += `${n} = ${result}`;
+        else
+            record += `${n} + `;
+    }
+
     $("#result").attr("value", result);
+    $("#record").attr("value", record);
 });
 
 //Roll custom die
@@ -36,15 +48,17 @@ $(".rollcustom").click(function(){
     $("#result").attr("value", result);
 });
 
-//Function to reset all dice rolls
+//Reset all dice rolls and results
 $(".reset").click(function(){
     $("#ndice").css("visibility", "hidden");
     $(".rollcustom").css("visibility", "hidden");
     $("#result").attr("value", 0);
     $(".d_quantity").val(1);
     document.querySelector("#ndice").value = 1;
+    $("#record").attr("value", "");
 });
 
+////////////////////////////////////
 //Function to generate a random number
 function RandomNum(e){
     //Get the id of the clicked button
