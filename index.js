@@ -30,10 +30,10 @@ $(".dice").click(function(e){
             record += `${n} + `;
     }
 
-    //Create rollSequence, an array that contains all dice roll, from last to first
+    //Add newRoll to rollSequence (an array that contains all dice roll, from last to first)
     let newRoll = `roll ${diceToRoll}d${diceType}: ${record}`;
     rollSequence.unshift(newRoll);
-    //Show rollSequence (TO DO: show each element on a new line)
+    //Show rollSequence in textarea (TO DO: show each element on a new line)
     document.getElementById("record").value = rollSequence.toString();
 });
 
@@ -60,17 +60,26 @@ $(".rollcustom").click(function(e){
             record += `${num} + `;
     }
 
-    document.getElementById("record").value = `roll ${diceToRoll} custom dice: ${record}`;
+    //Add newCustomRoll to rollSequence (an array that contains all dice roll, from last to first)
+    let newCustomRoll = `roll ${diceToRoll} custom dice: ${record}`;
+    rollSequence.unshift(newCustomRoll);
+    //Show rollSequence in textarea (TO DO: show each element on a new line)
+    document.getElementById("record").value = rollSequence.toString();
 });
 
 //Reset all dice rolls and results
 $(".reset").click(function(){
+    //Hide custom buttons
     $("#ndice").css("visibility", "hidden");
     $(".rollcustom").css("visibility", "hidden");
-    $("#result").attr("value", 0);
+
+    //Set dice quantity to 1
     $(".d_quantity").val(1);
+    //Set n. dice to 1
     document.querySelector("#ndice").value = 1;
+    //Empty textarea and reset rollSequence (array of recorded dice rolls)
     document.getElementById("record").value = "";
+    rollSequence = [];
 });
 
 ////////////////////////////////////
