@@ -9,17 +9,17 @@ $(".custom").click(function(){
 //Roll standard die
 $(".dice").click(function(e){
     //Get how many dice to roll
-    var diceToRoll = document.querySelector("#dquantity").value;
-    var diceType = e.target.id;
+    let diceToRoll = document.querySelector("#dquantity").value;
+    let diceType = e.target.id;
 
-    var result = 0;
-    var record = "";
+    let result = 0;
+    let record = "";
 
     //Call the function that generates a random number
     //Repeat n times where n = dice to roll
     for(i = 0; i < diceToRoll; i++)
     {
-        var n = RandomNum(e);
+        let n = RandomNum(e);
         result += n;
         
         if(diceToRoll == 1)
@@ -40,16 +40,16 @@ $(".dice").click(function(e){
 //Roll custom die (TO DO: improve this function)
 $(".rollcustom").click(function(e){
     //Get how many dice to roll
-    var diceToRoll = document.querySelector("#dquantity").value;
-    var result = 0;
-    var record = "";
+    let diceToRoll = document.querySelector("#dquantity").value;
+    let result = 0;
+    let record = "";
 
     //Generate random number between 1 and n. sides of custom die
     //Repeat n times where n = dice to roll
     for(i = 0; i < diceToRoll; i++)
     {
-        var customsides = document.querySelector("#ndice").value;
-        var num = Math.floor(Math.random() * customsides + 1);
+        let customsides = document.querySelector("#ndice").value;
+        let num = Math.floor(Math.random() * customsides + 1);
         result += num;
 
         if(diceToRoll == 1)
@@ -77,9 +77,9 @@ $(".reset").click(function(){
 //Function to generate a random number
 function RandomNum(e){
     //Get the id of the clicked button
-    var sides = e.target.id;
+    let sides = e.target.id;
     
     //Generate random number between 1 and n. sides
-    var n = Math.floor(Math.random() * sides + 1);
+    let n = Math.floor(Math.random() * sides + 1);
     return n;
 }
