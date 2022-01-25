@@ -31,18 +31,19 @@ $(".dice").click(function(e){
     }
 
     //Add newRoll to rollSequence (an array that contains all dice roll, from last to first)
-    let newRoll = `roll ${diceToRoll}d${diceType}: ${record}`;
+    let newRoll = `roll ${diceToRoll}d${diceType}: ${record}\n`;
     rollSequence.unshift(newRoll);
-    //Show rollSequence in textarea (TO DO: show each element on a new line)
-    document.getElementById("record").value = rollSequence.toString();
+    //Show rollSequence in textarea
+    document.getElementById("record").value = rollSequence.join('').toString();
 });
 
 //Roll custom die (TO DO: improve this function)
-$(".rollcustom").click(function(e){
+$(".rollcustom").click(function(){
     //Get how many dice to roll
     let diceToRoll = document.querySelector("#dquantity").value;
     let result = 0;
     let record = "";
+    let diceType = $("#ndice").val();
 
     //Generate random number between 1 and n. sides of custom die
     //Repeat n times where n = dice to roll
@@ -61,10 +62,10 @@ $(".rollcustom").click(function(e){
     }
 
     //Add newCustomRoll to rollSequence (an array that contains all dice roll, from last to first)
-    let newCustomRoll = `roll ${diceToRoll} custom dice: ${record}`;
+    let newCustomRoll = `roll ${diceToRoll}d${diceType}: ${record}\n`;
     rollSequence.unshift(newCustomRoll);
-    //Show rollSequence in textarea (TO DO: show each element on a new line)
-    document.getElementById("record").value = rollSequence.toString();
+    //Show rollSequence in textarea
+    document.getElementById("record").value = rollSequence.join('').toString();
 });
 
 //Reset all dice rolls and results
