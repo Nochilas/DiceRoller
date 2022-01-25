@@ -1,4 +1,4 @@
-//let rollSequence = [];
+let rollSequence = [];
 
 //Make custom options visible
 $(".custom").click(function(){
@@ -30,8 +30,11 @@ $(".dice").click(function(e){
             record += `${n} + `;
     }
 
-    document.getElementById("record").value = `roll ${diceToRoll}d${diceType}: ${record}`;
-    //rollSequence.push(record);
+    //Create rollSequence, an array that contains all dice roll, from last to first
+    let newRoll = `roll ${diceToRoll}d${diceType}: ${record}`;
+    rollSequence.unshift(newRoll);
+    //Show rollSequence (TO DO: show each element on a new line)
+    document.getElementById("record").value = rollSequence.toString();
 });
 
 //Roll custom die (TO DO: improve this function)
