@@ -22,7 +22,7 @@ $(".dice").click(function(e){
     //Repeat n times where n = dice to roll
     for(i = 0; i < diceToRoll; i++)
     {
-        let n = RandomNum(e);
+        let n = RandomNum(diceType);
         result += n;
         
         if(diceToRoll == 1)
@@ -37,13 +37,14 @@ $(".dice").click(function(e){
     printRollSequence(diceToRoll, diceType, record);
 });
 
-//Roll custom die (TO DO: improve this function)
+//Roll custom die
 $(".rollcustom").click(function(){
     //Get how many dice to roll
     let diceToRoll = document.querySelector("#dquantity").value;
+    let diceType = $("#ndice").val();
+
     let result = 0;
     let record = "";
-    let diceType = $("#ndice").val();
 
     //Call function to add modifier to result
     result = addModifier(result);
@@ -52,8 +53,7 @@ $(".rollcustom").click(function(){
     //Repeat n times where n = dice to roll
     for(i = 0; i < diceToRoll; i++)
     {
-        let customsides = document.querySelector("#ndice").value;
-        let num = Math.floor(Math.random() * customsides + 1);
+        let num = RandomNum(diceType);
         result += num;
 
         if(diceToRoll == 1)
@@ -87,12 +87,9 @@ $(".reset").click(function(){
 
 ////////////////////////////////////
 //Function to generate a random number
-function RandomNum(e){
-    //Get the id of the clicked button
-    let sides = e.target.id;
-    
+function RandomNum(dt){    
     //Generate random number between 1 and n. sides
-    let n = Math.floor(Math.random() * sides + 1);
+    let n = Math.floor(Math.random() * dt + 1);
     return n;
 }
 
