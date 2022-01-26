@@ -1,12 +1,12 @@
 let rollSequence = [];
 
-//Make custom options visible
+//---Make custom options visible---
 $(".custom").click(function(){
     $("#ndice").css("visibility", "visible");
     $(".rollcustom").css("visibility", "visible");
 });
 
-//Roll standard die
+//---Roll standard die---
 $(".dice").click(function(e){
     //Get how many dice to roll
     let diceToRoll = document.querySelector("#dquantity").value;
@@ -15,29 +15,12 @@ $(".dice").click(function(e){
     let result = 0;
     let record = "";
 
-    //Call function to add modifier to result
     result = addModifier(result);
-    
-    //Call the function that generates a random number
-    //Repeat n times where n = dice to roll
-    for(i = 0; i < diceToRoll; i++)
-    {
-        let n = RandomNum(diceType);
-        result += n;
-        
-        if(diceToRoll == 1)
-            record = `${result}`;
-        else if(i === diceToRoll - 1)
-            record += `${n} = ${result}`;
-        else
-            record += `${n} + `;
-    }
-
-    //Call function to print roll sequence
+    record = calculate(diceToRoll, diceType, result, record);
     printRollSequence(diceToRoll, diceType, record);
 });
 
-//Roll custom die
+//---Roll custom die---
 $(".rollcustom").click(function(){
     //Get how many dice to roll
     let diceToRoll = document.querySelector("#dquantity").value;
@@ -46,29 +29,12 @@ $(".rollcustom").click(function(){
     let result = 0;
     let record = "";
 
-    //Call function to add modifier to result
     result = addModifier(result);
-
-    //Generate random number between 1 and n. sides of custom die
-    //Repeat n times where n = dice to roll
-    for(i = 0; i < diceToRoll; i++)
-    {
-        let num = RandomNum(diceType);
-        result += num;
-
-        if(diceToRoll == 1)
-            record = `${result}`;
-        else if(i === diceToRoll - 1)
-            record += `${num} = ${result}`;
-        else
-            record += `${num} + `;
-    }
-
-    //Call function to print roll sequence
+    record = calculate(diceToRoll, diceType, result, record);
     printRollSequence(diceToRoll, diceType, record);
 });
 
-//Reset all dice rolls and results
+//---Reset all dice rolls and results---
 $(".reset").click(function(){
     //Hide custom buttons
     $("#ndice").css("visibility", "hidden");
@@ -76,30 +42,51 @@ $(".reset").click(function(){
 
     //Set dice quantity to 1
     $(".d_quantity").val(1);
+
     //Set n. dice to 1
     document.querySelector("#ndice").value = 1;
+
     //Set modifier to 0
     $(".modifier").val(0);
+
     //Empty textarea and reset rollSequence (array of recorded dice rolls)
     document.getElementById("record").value = "";
     rollSequence = [];
 });
 
 ////////////////////////////////////
-//Function to generate a random number
-function RandomNum(dt){    
+//Generate a random number
+function randomNum(dt){    
     //Generate random number between 1 and n. sides
     let n = Math.floor(Math.random() * dt + 1);
     return n;
 }
 
-//Function to add modifier to result
+//Add modifier to result
 function addModifier(r){
     //Get modifier value
     let modif = parseInt(document.querySelector("#modifier").value);
     //Add modifier to result
     r += modif;
     return r;
+}
+
+//Calculate result and record it in a string
+function calculate(dtr, dt, res, rec){
+    for(i = 0; i < dtr; i++)
+    {
+        let n = randomNum(dt);
+        res += n;
+        
+        if(dtr == 1)
+            rec = `${res}`;
+        else if(i === dtr - 1)
+            rec += `${n} = ${res}`;
+        else
+            rec += `${n} + `;
+    }
+
+    return rec;
 }
 
 //Function to print roll sequence
