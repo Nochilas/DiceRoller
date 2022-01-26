@@ -26,13 +26,18 @@ p{
     width: 25%;
 }
 
-.dicebuttons, .resultbox, .resetbutton, .dicequantity{
+.dicequantity, .modifiers {
+    display: flex;
+}
+
+.dicebuttons, .resultbox, .resetbutton, .dicequantity, .modifiers{
     margin: 10px 10px 20px 10px;
 }
 
-
 /*--------IDs--------*/
-#dquantity{
+#dquantity, #modifier{
+    margin-left: 20px;
+    height: 30px;
     width: 60px;
 }
 
