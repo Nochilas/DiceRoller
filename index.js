@@ -7,10 +7,10 @@ $(".custom").click(function(){
 });
 
 //---Roll standard die---
-$(".dice").click(function(e){
+$(".dice").click(function(){
     //Get how many dice to roll
     let diceToRoll = document.querySelector("#dquantity").value;
-    let diceType = e.target.id;
+    let diceType = $(this).attr("id");
 
     let result = 0;
     let record = "";
